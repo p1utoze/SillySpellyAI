@@ -30,12 +30,12 @@ image = modal.Image.debian_slim(python_version="3.11").pip_install(
     "accelerate",
     "streamlit", "bitsandbytes",
     "huggingface_hub", "hf_transfer",
-    "langchain", "st-annotated-text",
+    "st-annotated-text",
     "python-dotenv", "scipy"
 ).env({
     "HF_TOKEN": os.getenv("HF_TOKEN"),
     "HF_HUB_ENABLE_HF_TRANSFER": "1",
-    "SUNO_USE_SMALL_MODELS": "True"
+    "LLM_URL": os.getenv("LLM_URL")
 })
 
 app = modal.App(name="spellchecker-streamlit", image=image)
@@ -69,6 +69,7 @@ streamlit_script_mount = modal.Mount.from_local_file(
     allow_concurrent_inputs=100,
     mounts=[streamlit_script_mount],
     timeout=60 * 20,
+    container_idle_timeout=60 * 5,
 )
 @modal.web_server(8000)
 def run():

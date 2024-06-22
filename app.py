@@ -14,8 +14,9 @@ def main():
         layout="wide",
         initial_sidebar_state="collapsed",
     )
-    URL = os.getenv("LLM_URL")
 
+    URL = os.getenv("LLM_URL")
+    print(URL)
     # Initialize the language correction pipeline
 
     @st.cache_resource
@@ -69,7 +70,8 @@ def main():
 
         return highlighted_text, fixed_text
 
-    st.title("Text Highlight and Correction App")
+    st.title("Silly Spelly AI 🧙‍♂️🔤🧙‍♀️")
+    st.header("Correct your text with the power of AI!")
     user_input = st.text_input("Enter your text here:")
     if user_input:
         # Correct the text using langchain
@@ -82,7 +84,7 @@ def main():
         # Display the highlighted text
         col1, col2 = st.columns([1, 1], gap="large")
         with col1:
-            with st.container():
+            with st.container(border=True):
                 col_1, col_2 = st.columns([1, 1])
                 with col_1:
                     st.subheader("❎ This is the incorrect text")
@@ -91,7 +93,7 @@ def main():
                     st.subheader("✅This is the Correct spelled text")
                     annotated_text(*right)
         with col2:
-            with st.container():
+            with st.container(border=True):
                 inputs = st.session_state.tts_processor(corrected_text, return_tensors="pt")
                 co1, co2 = st.columns([1, 1])
                 with co2:
