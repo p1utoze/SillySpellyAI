@@ -1,13 +1,12 @@
 # SillySpellyAI
-🔤 A friendly simple spell checker app powered by AI and built with Python.
+    🔤 A friendly simple spell checker app powered by AI and built with Python. Made in a hackathon within 3 hours.
 
 ## Features
 - ✍ Highlights misspelled words
 - 🔨 Auto-corrects misspelled words
 - 🤔 Reasons why a word in the sentence is misspelled
 - 🔊 An audio feature that reads out the corrected sentence
-
-
+![app.png](assets%2Fapp.png)
 ## Installation
 1. Clone the repository
 ```bash
