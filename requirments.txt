@@ -1,0 +1,9 @@
+transformers==4.41.2
+torch
+accelerate
+streamlit
+bitsandbytes
+huggingface_hub
+hf-transfer
+python-dotenv
+scipy
